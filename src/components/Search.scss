@@ -1,0 +1,38 @@
+.search {
+  // box model
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.search__input {
+  // box model
+  flex-grow: 1;
+  padding: 0.2rem 0.5rem;
+
+  // border
+  border: 2px solid var(--color-black);
+  border-radius: 0.5rem;
+
+  // visual
+  background-color: rgb(var(--color-white-rgb) / 0.8);
+
+  // typography
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+
+  &:focus {
+    outline: 2px solid var(--color-accent);
+  }
+}
+
+.search__button {
+  // box model
+  padding: 0.2rem 0.5rem;
+  // border
+  border: 2px solid var(--color-black);
+  border-radius: 0.5rem;
+
+  // visual
+  cursor: pointer;
+}

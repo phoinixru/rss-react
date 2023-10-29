@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Yeseva+One&display=swap');
+
+:root {
+  --font-title: 'Josefin Sans', sans-serif;
+  --font-paragraph: 'Yeseva One', serif;
+
+  --color-white-rgb: 255 255 255;
+  --color-white: rgb(var(--color-white-rgb));
+  --color-black-rgb: 0 0 0;
+  --color-black: rgb(var(--color-black-rgb));
+
+  --color-text-rgb: 219 169 136;
+  --color-text: rgb(var(--color-text-rgb));
+  --color-background-rgb: 22 44 58;
+  --color-background: rgb(var(--color-background-rgb));
+  --color-accent-rgb: 217 124 80;
+  --color-accent: rgb(var(--color-accent-rgb));
+}
+
+body {
+  // typography
+  font-family: var(--font-paragraph);
+  font-size: 1rem;
+  color: var(--color-text);
+
+  // visual
+  background-color: var(--color-background);
+}
