@@ -1,29 +1,29 @@
 import { Component } from 'react';
-import './App.scss';
+import './styles/App.scss';
 import Results from './components/Results';
 import Search from './components/Search';
-import { PokemonCard } from './types/PokemonCard';
+
+type AppProps = Record<string, never>;
 
 type AppState = {
   q: string;
-  results: PokemonCard[];
 };
 
-export default class App extends Component<null, AppState> {
-  state = {
-    q: '',
-    results: [],
+export default class App extends Component<AppProps, AppState> {
+  state: AppState = {
+    q: localStorage?.q,
   };
 
   render() {
     const updateQuery = (q: string) => {
+      localStorage.setItem('q', q);
       this.setState({ q });
     };
 
     return (
       <div className="app">
-        <Search onChange={updateQuery} />
-        <Results />
+        <Search onChange={updateQuery} value={this.state.q} />
+        <Results query={this.state.q} />
       </div>
     );
   }

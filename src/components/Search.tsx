@@ -1,7 +1,8 @@
-import { Component } from 'react';
+import { Component, FormEventHandler } from 'react';
 import './Search.scss';
 
 type SearchProps = {
+  value: string;
   onChange: (q: string) => void;
 };
 
@@ -11,27 +12,26 @@ type SearchState = {
 
 export default class Search extends Component<SearchProps, SearchState> {
   state = {
-    value: localStorage?.q ?? '',
+    value: this.props.value,
   };
 
   render() {
     const { onChange } = this.props;
 
-    const sendQuery = () => {
+    const handleSubmit: FormEventHandler = (e) => {
+      e.preventDefault();
       onChange(this.state.value);
     };
 
     return (
-      <div className="search">
+      <form className="search" onSubmit={handleSubmit}>
         <input
           className="search__input"
-          onChange={(e) => this.setState({ value: e.target.value })}
+          onChange={(e) => this.setState({ value: e.target.value.trim() })}
           value={this.state.value}
         />
-        <button className="search__button" onClick={sendQuery}>
-          Search
-        </button>
-      </div>
+        <button className="search__button">Search</button>
+      </form>
     );
   }
 }
