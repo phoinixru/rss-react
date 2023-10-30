@@ -38,6 +38,17 @@
   cursor: pointer;
 }
 
+.search__button--error {
+  // border
+  border-color: var(--color-accent);
+
+  // typography
+  color: var(--color-accent);
+
+  // visual
+  background-color: var(--color-background);
+}
+
 .search__note {
   // box model
   width: 100%;

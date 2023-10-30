@@ -2,6 +2,7 @@ import { Component } from 'react';
 import './styles/App.scss';
 import Results from './components/Results';
 import Search from './components/Search';
+import ErrorBoundary from './components/ErrorBoundary';
 
 type AppProps = Record<string, never>;
 
@@ -23,8 +24,10 @@ export default class App extends Component<AppProps, AppState> {
     return (
       <div className="app">
         <h1>Pokémon TCG</h1>
-        <Search onChange={updateQuery} value={this.state.q} />
-        <Results query={this.state.q} />
+        <ErrorBoundary>
+          <Search onChange={updateQuery} value={this.state.q} />
+          <Results query={this.state.q} />
+        </ErrorBoundary>
       </div>
     );
   }
