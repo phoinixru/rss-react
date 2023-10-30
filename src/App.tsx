@@ -22,6 +22,7 @@ export default class App extends Component<AppProps, AppState> {
 
     return (
       <div className="app">
+        <h1>Pokémon TCG</h1>
         <Search onChange={updateQuery} value={this.state.q} />
         <Results query={this.state.q} />
       </div>

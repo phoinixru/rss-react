@@ -2,7 +2,8 @@
   // box model
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: 0.5rem 1rem;
+  flex-wrap: wrap;
 }
 
 .search__input {
@@ -35,4 +36,13 @@
 
   // visual
   cursor: pointer;
+}
+
+.search__note {
+  // box model
+  width: 100%;
+  margin: 0;
+
+  // typography
+  font-size: 0.8rem;
 }

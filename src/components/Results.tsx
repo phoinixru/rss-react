@@ -10,6 +10,7 @@ type ResultsProps = {
 
 type ResultsState = {
   items: PokemonCard[] | null;
+  isLoading: boolean;
 };
 
 const CARDS_POINT = `${API_URL}/cards`;
@@ -17,6 +18,7 @@ const CARDS_POINT = `${API_URL}/cards`;
 export default class Results extends Component<ResultsProps, ResultsState> {
   state: ResultsState = {
     items: null,
+    isLoading: true,
   };
 
   static defaultProps = {
@@ -26,7 +28,7 @@ export default class Results extends Component<ResultsProps, ResultsState> {
   render() {
     return (
       <div className="results">
-        {this.state.items === null ? (
+        {this.state.isLoading ? (
           <p className="loading">Loading...</p>
         ) : this.state.items?.length ? (
           <ul className="cards">
@@ -46,8 +48,8 @@ export default class Results extends Component<ResultsProps, ResultsState> {
   }
 
   componentDidUpdate(prevProps: ResultsProps) {
-    console.log(prevProps, this.props);
     if (prevProps.query !== this.props.query) {
+      this.setState({ isLoading: true });
       this.fetchCards();
     }
   }
@@ -62,6 +64,7 @@ export default class Results extends Component<ResultsProps, ResultsState> {
 
     const res = await fetch(`${CARDS_POINT}?${params}`);
     const result = await res.json();
+    this.setState({ isLoading: false });
 
     if ('data' in result) {
       this.setState({ items: result.data });

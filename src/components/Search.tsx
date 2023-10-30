@@ -31,6 +31,9 @@ export default class Search extends Component<SearchProps, SearchState> {
           value={this.state.value}
         />
         <button className="search__button">Search</button>
+        <p className="search__note">
+          Use wildcard for partial matching <code>char*</code>
+        </p>
       </form>
     );
   }
