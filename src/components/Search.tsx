@@ -27,7 +27,7 @@ export default class Search extends Component<SearchProps, SearchState> {
     };
 
     if (hasError) {
-      throw new Error('Error for ErrorBoundry');
+      throw new Error('Error for ErrorBoundary');
     }
 
     return (
