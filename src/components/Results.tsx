@@ -18,7 +18,7 @@ const CARDS_POINT = `${API_URL}/cards`;
 export default class Results extends Component<ResultsProps, ResultsState> {
   state: ResultsState = {
     items: null,
-    isLoading: true,
+    isLoading: false,
   };
 
   static defaultProps = {
@@ -49,12 +49,12 @@ export default class Results extends Component<ResultsProps, ResultsState> {
 
   componentDidUpdate(prevProps: ResultsProps) {
     if (prevProps.query !== this.props.query) {
-      this.setState({ isLoading: true });
       this.fetchCards();
     }
   }
 
   async fetchCards(): Promise<void> {
+    this.setState({ isLoading: true });
     const { query } = this.props;
     const q = query ? `name:${query}` : '';
     const params = new URLSearchParams({
