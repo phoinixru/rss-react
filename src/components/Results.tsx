@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import './Results.scss';
 import { PokemonCard } from '../types/PokemonCard';
 import { API_URL, PAGE_SIZE } from '../config';
@@ -8,66 +8,47 @@ type ResultsProps = {
   query: string;
 };
 
-type ResultsState = {
-  items: PokemonCard[] | null;
-  isLoading: boolean;
-};
-
 const CARDS_POINT = `${API_URL}/cards`;
 
-export default class Results extends Component<ResultsProps, ResultsState> {
-  state: ResultsState = {
-    items: null,
-    isLoading: false,
-  };
+export default function Results(props: ResultsProps) {
+  const { query = '' } = props;
+  const [items, setItems] = useState<PokemonCard[] | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  static defaultProps = {
-    query: '',
-  };
+  useEffect(() => {
+    const fetchCards = async () => {
+      setIsLoading(true);
+      const q = query ? `name:${query}` : '';
+      const params = new URLSearchParams({
+        pageSize: String(PAGE_SIZE),
+        q,
+      });
 
-  render() {
-    return (
-      <div className="results">
-        {this.state.isLoading ? (
-          <p className="loading">Loading...</p>
-        ) : this.state.items?.length ? (
-          <ul className="cards">
-            {this.state.items.map((item) => (
-              <ResultItem key={item.id} card={item} />
-            ))}
-          </ul>
-        ) : (
-          <p className="nothing">Nothing is found</p>
-        )}
-      </div>
-    );
-  }
+      const res = await fetch(`${CARDS_POINT}?${params}`);
+      const result = await res.json();
+      setIsLoading(false);
 
-  componentDidMount(): void {
-    this.fetchCards();
-  }
+      if ('data' in result) {
+        setItems(result.data);
+      }
+    };
 
-  componentDidUpdate(prevProps: ResultsProps) {
-    if (prevProps.query !== this.props.query) {
-      this.fetchCards();
-    }
-  }
+    fetchCards();
+  }, [query]);
 
-  async fetchCards(): Promise<void> {
-    this.setState({ isLoading: true });
-    const { query } = this.props;
-    const q = query ? `name:${query}` : '';
-    const params = new URLSearchParams({
-      pageSize: String(PAGE_SIZE),
-      q,
-    });
-
-    const res = await fetch(`${CARDS_POINT}?${params}`);
-    const result = await res.json();
-    this.setState({ isLoading: false });
-
-    if ('data' in result) {
-      this.setState({ items: result.data });
-    }
-  }
+  return (
+    <div className="results">
+      {isLoading ? (
+        <p className="loading">Loading...</p>
+      ) : items?.length ? (
+        <ul className="cards">
+          {items.map((item) => (
+            <ResultItem key={item.id} card={item} />
+          ))}
+        </ul>
+      ) : (
+        <p className="nothing">Nothing is found</p>
+      )}
+    </div>
+  );
 }
