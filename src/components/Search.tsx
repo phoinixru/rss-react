@@ -1,4 +1,4 @@
-import { Component, FormEventHandler } from 'react';
+import { FormEventHandler, useState } from 'react';
 import './Search.scss';
 
 type SearchProps = {
@@ -6,50 +6,39 @@ type SearchProps = {
   onChange: (q: string) => void;
 };
 
-type SearchState = {
-  value: string;
-  hasError: boolean;
-};
+export default function Search(props: SearchProps) {
+  const { onChange } = props;
+  const [hasError, setHasError] = useState(false);
+  const [value, setValue] = useState(props.value);
 
-export default class Search extends Component<SearchProps, SearchState> {
-  state = {
-    value: this.props.value,
-    hasError: false,
+  const handleSubmit: FormEventHandler = (e) => {
+    e.preventDefault();
+    onChange(value);
   };
 
-  render() {
-    const { onChange } = this.props;
-    const { hasError } = this.state;
-
-    const handleSubmit: FormEventHandler = (e) => {
-      e.preventDefault();
-      onChange(this.state.value);
-    };
-
-    if (hasError) {
-      throw new Error('Error for ErrorBoundary');
-    }
-
-    return (
-      <form className="search" onSubmit={handleSubmit}>
-        <input
-          className="search__input"
-          onChange={(e) => this.setState({ value: e.target.value.trim() })}
-          value={this.state.value}
-        />
-        <button className="search__button">Search</button>
-        <button
-          className="search__button search__button--error"
-          onClick={() => {
-            this.setState({ hasError: true });
-          }}
-        >
-          Throw an error
-        </button>
-        <p className="search__note">
-          Use wildcard for partial matching <code>char*</code>
-        </p>
-      </form>
-    );
+  if (hasError) {
+    throw new Error('Error for ErrorBoundary');
   }
+
+  return (
+    <form className="search" onSubmit={handleSubmit}>
+      <input
+        className="search__input"
+        onChange={(e) => setValue(e.target.value.trim())}
+        value={value}
+      />
+      <button className="search__button">Search</button>
+      <button
+        className="search__button search__button--error"
+        onClick={() => {
+          setHasError(true);
+        }}
+      >
+        Throw an error
+      </button>
+      <p className="search__note">
+        Use wildcard for partial matching <code>char*</code>
+      </p>
+    </form>
+  );
 }
