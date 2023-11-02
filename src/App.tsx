@@ -1,34 +1,24 @@
-import { Component } from 'react';
 import './styles/App.scss';
 import Results from './components/Results';
 import Search from './components/Search';
 import ErrorBoundary from './components/ErrorBoundary';
+import { useState } from 'react';
 
-type AppProps = Record<string, never>;
+export default function App() {
+  const [searchQuery, setSearchQuery] = useState(localStorage?.q);
 
-type AppState = {
-  q: string;
-};
-
-export default class App extends Component<AppProps, AppState> {
-  state: AppState = {
-    q: localStorage?.q,
+  const updateQuery = (q: string) => {
+    localStorage.setItem('q', q);
+    setSearchQuery(q);
   };
 
-  render() {
-    const updateQuery = (q: string) => {
-      localStorage.setItem('q', q);
-      this.setState({ q });
-    };
-
-    return (
-      <div className="app">
-        <h1>Pokémon TCG</h1>
-        <ErrorBoundary>
-          <Search onChange={updateQuery} value={this.state.q} />
-          <Results query={this.state.q} />
-        </ErrorBoundary>
-      </div>
-    );
-  }
+  return (
+    <div className="app">
+      <h1>Pokémon TCG</h1>
+      <ErrorBoundary>
+        <Search onChange={updateQuery} value={searchQuery} />
+        <Results query={searchQuery} />
+      </ErrorBoundary>
+    </div>
+  );
 }
