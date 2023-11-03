@@ -1,0 +1,28 @@
+.pagination {
+  // box model
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: -1rem -1rem 1rem;
+  padding: 0.5rem 1rem;
+
+  // visual
+  background-color: rgb(var(--color-white-rgb) / 0.2);
+}
+
+.controls {
+  // box model
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+  padding: 0;
+
+  // border
+  border: 0;
+
+  button {
+    // visual
+    cursor: pointer;
+  }
+}

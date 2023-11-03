@@ -17,12 +17,14 @@ export default function Search(props: SearchProps) {
 
   return (
     <form className="search" onSubmit={handleSubmit}>
-      <input
-        className="search__input"
-        onChange={(e) => setValue(e.target.value.trim())}
-        value={value}
-      />
-      <button className="search__button">Search</button>
+      <fieldset className="fieldset">
+        <input
+          className="search__input"
+          onChange={(e) => setValue(e.target.value.trim())}
+          value={value}
+        />
+        <button className="search__button">Search</button>
+      </fieldset>
       <p className="search__note">
         Use wildcard for partial matching <code>char*</code>
       </p>

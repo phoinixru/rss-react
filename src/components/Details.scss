@@ -6,4 +6,8 @@
 
   // visual
   background-color: rgb(var(--color-white-rgb) / 0.1);
+
+  @media (max-width: 600px) {
+    width: 45%;
+  }
 }
