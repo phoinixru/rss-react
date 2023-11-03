@@ -19,6 +19,9 @@
 }
 
 body {
+  // box model
+  padding: 1rem;
+
   // typography
   font-family: var(--font-paragraph);
   font-size: 1rem;

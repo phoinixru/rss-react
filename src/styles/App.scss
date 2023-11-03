@@ -1,6 +1,14 @@
 .app {
   // box model
-  max-width: 600px;
+  max-width: 1000px;
   margin: auto;
   padding: 1rem 0;
+}
+
+.cards-pane {
+  // box model
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 1rem;
 }

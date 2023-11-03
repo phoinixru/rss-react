@@ -1,0 +1,10 @@
+.card__name {
+  // box model
+  margin-bottom: 0.2rem;
+
+  // typography
+  font-size: 0.9em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

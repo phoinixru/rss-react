@@ -1,0 +1,9 @@
+.card-details {
+  // box model
+  width: 33%;
+  flex-shrink: 0;
+  padding: 1rem;
+
+  // visual
+  background-color: rgb(var(--color-white-rgb) / 0.1);
+}

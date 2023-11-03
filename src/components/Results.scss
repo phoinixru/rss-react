@@ -1,6 +1,10 @@
 .results {
   // box model
-  margin-top: 1rem;
+  padding: 1rem;
+  flex-grow: 1;
+
+  // visual
+  background-color: rgb(var(--color-black-rgb) / 0.1);
 }
 
 .nothing {

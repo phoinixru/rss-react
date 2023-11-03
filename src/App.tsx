@@ -18,8 +18,10 @@ export default function App() {
       <h1>Pokémon TCG</h1>
       <ErrorBoundary>
         <Search onChange={updateQuery} value={searchQuery} />
-        <Results query={searchQuery} />
-        <Outlet />
+        <div className="cards-pane">
+          <Results query={searchQuery} />
+          <Outlet />
+        </div>
       </ErrorBoundary>
     </div>
   );
