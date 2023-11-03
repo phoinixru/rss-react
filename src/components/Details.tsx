@@ -37,22 +37,58 @@ export default function Details() {
   } else if (!card) {
     content = <p>No card found</p>;
   } else {
+    const { number, name, images, set, supertype, subtypes, rarity, artist } =
+      card;
     content = (
       <>
-        <h2>
-          #{card.number} - {card.name}
-        </h2>
-        <img src={card.images.large} alt={card.name} />
+        <img className="set-logo" src={set.images.logo} alt="logo" />
+        <div className="info">
+          <h2>{name}</h2>
+          <img className="image" src={images.large} alt={name} />
+          <dl>
+            <dt>Set</dt>
+            <dd>
+              <img
+                className="set-symbol"
+                src={set.images.symbol}
+                alt="symbol"
+              />
+              {set.name}
+            </dd>
+
+            <dt>Number</dt>
+            <dd>
+              {number} / {set.total}
+            </dd>
+
+            <dt>Type</dt>
+            <dd>
+              {supertype} / {subtypes.join(', ')}
+            </dd>
+
+            {rarity && (
+              <>
+                <dt>Rarity</dt>
+                <dd>{rarity}</dd>
+              </>
+            )}
+
+            <dt>Artist</dt>
+            <dd>{artist}</dd>
+          </dl>
+        </div>
       </>
     );
   }
 
   return (
     <div className="card-details">
-      <button className="btn btn--close" onClick={closeDetails}>
-        x
-      </button>
-      {content}
+      <div className="close-container">
+        <button className="btn btn--close" onClick={closeDetails}>
+          Close
+        </button>
+      </div>
+      <div className="details-content">{content}</div>
     </div>
   );
 }
