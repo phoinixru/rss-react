@@ -8,17 +8,12 @@ type SearchProps = {
 
 export default function Search(props: SearchProps) {
   const { onChange } = props;
-  const [hasError, setHasError] = useState(false);
   const [value, setValue] = useState(props.value);
 
   const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();
     onChange(value);
   };
-
-  if (hasError) {
-    throw new Error('Error for ErrorBoundary');
-  }
 
   return (
     <form className="search" onSubmit={handleSubmit}>
@@ -28,14 +23,6 @@ export default function Search(props: SearchProps) {
         value={value}
       />
       <button className="search__button">Search</button>
-      <button
-        className="search__button search__button--error"
-        onClick={() => {
-          setHasError(true);
-        }}
-      >
-        Throw an error
-      </button>
       <p className="search__note">
         Use wildcard for partial matching <code>char*</code>
       </p>
