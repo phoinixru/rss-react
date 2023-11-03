@@ -1,14 +1,16 @@
-import { useParams } from 'react-router-dom';
 import './Details.scss';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import Loader from './Loader';
 import { API_URL } from '../config';
-import { useEffect, useState } from 'react';
 import { PokemonCard } from '../types/PokemonCard';
 
 export default function Details() {
   const { id } = useParams();
   const [card, setCard] = useState<PokemonCard | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCard = async () => {
@@ -24,6 +26,10 @@ export default function Details() {
 
     fetchCard();
   }, [id]);
+
+  const closeDetails = () => {
+    navigate('/?' + searchParams.toString());
+  };
 
   let content;
   if (isLoading) {
@@ -41,5 +47,12 @@ export default function Details() {
     );
   }
 
-  return <div className="card-details">{content}</div>;
+  return (
+    <div className="card-details">
+      <button className="btn btn--close" onClick={closeDetails}>
+        x
+      </button>
+      {content}
+    </div>
+  );
 }

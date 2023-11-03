@@ -1,4 +1,7 @@
 .card-details {
+  // positioning
+  position: relative;
+
   // box model
   width: 33%;
   flex-shrink: 0;
@@ -10,4 +13,35 @@
   @media (max-width: 600px) {
     width: 45%;
   }
+
+  .loading {
+    // box model
+    padding: 0 2rem;
+  }
+
+  h2 {
+    // box model
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+
+    // typography
+    line-height: 1;
+  }
+}
+
+.btn--close {
+  // positioning
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+
+  // box model
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+
+  // border
+  border-radius: 1rem;
 }

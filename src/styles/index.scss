@@ -42,3 +42,42 @@ code {
   // visual
   background-color: rgb(var(--color-white-rgb) / 0.2);
 }
+
+.btn,
+select {
+  // border
+  border-radius: 0.2rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: initial;
+
+  // typography
+  color: var(--color-text);
+
+  // visual
+  background-color: rgb(var(--color-white-rgb) / 0.2);
+  cursor: pointer;
+
+  // other
+  transition: all 0.2s;
+
+  &:hover {
+    // visual
+    background-color: rgb(var(--color-black-rgb) / 0.4);
+
+    // typography
+    color: var(--color-accent);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      // visual
+      background-color: rgb(var(--color-white-rgb) / 0.2);
+      // typography
+      color: var(--color-text);
+    }
+  }
+}

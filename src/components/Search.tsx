@@ -23,7 +23,7 @@ export default function Search(props: SearchProps) {
           onChange={(e) => setValue(e.target.value.trim())}
           value={value}
         />
-        <button className="search__button">Search</button>
+        <button className="btn search__button">Search</button>
       </fieldset>
       <p className="search__note">
         Use wildcard for partial matching <code>char*</code>
