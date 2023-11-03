@@ -3,6 +3,7 @@ import Results from './components/Results';
 import Search from './components/Search';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState(localStorage?.q);
@@ -18,6 +19,7 @@ export default function App() {
       <ErrorBoundary>
         <Search onChange={updateQuery} value={searchQuery} />
         <Results query={searchQuery} />
+        <Outlet />
       </ErrorBoundary>
     </div>
   );
