@@ -3,23 +3,6 @@
   margin-top: 1rem;
 }
 
-.loading {
-  // typography
-  font-size: 2rem;
-  text-align: center;
-
-  &::after {
-    content: '🌀';
-
-    // box model
-    display: inline-block;
-    margin-left: 0.5rem;
-
-    // visual
-    animation: spin 2s linear infinite;
-  }
-}
-
 .nothing {
   // typography
   text-align: center;
@@ -30,29 +13,4 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
-}
-
-@-moz-keyframes spin {
-  from {
-    -moz-transform: rotate(0deg);
-  }
-  to {
-    -moz-transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes spin {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

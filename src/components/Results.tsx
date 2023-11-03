@@ -3,6 +3,7 @@ import './Results.scss';
 import { PokemonCard } from '../types/PokemonCard';
 import { API_URL, PAGE_SIZE } from '../config';
 import ResultItem from './ResultItem';
+import Loader from './Loader';
 
 type ResultsProps = {
   query: string;
@@ -39,7 +40,7 @@ export default function Results(props: ResultsProps) {
   return (
     <div className="results">
       {isLoading ? (
-        <p className="loading">Loading...</p>
+        <Loader />
       ) : items?.length ? (
         <ul className="cards">
           {items.map((item) => (
