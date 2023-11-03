@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
 import './Results.scss';
+import { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { API_URL, DEFAULT_PAGE_SIZE } from '../config';
+import { CardsResponse } from '../types/CardsResponse';
 import ResultItem from './ResultItem';
 import Loader from './Loader';
-import { CardsResponse } from '../types/CardsResponse';
-import { useSearchParams } from 'react-router-dom';
 import Pagination from './Pagination';
 
 type ResultsProps = {
@@ -18,6 +18,8 @@ export default function Results(props: ResultsProps) {
   const [response, setResponse] = useState<CardsResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+
   const page = searchParams.get('page') || '1';
   const pageSize = searchParams.get('pageSize') || String(DEFAULT_PAGE_SIZE);
 
@@ -36,6 +38,10 @@ export default function Results(props: ResultsProps) {
 
     fetchCards();
   }, [query, page, pageSize]);
+
+  const closeDetails = () => {
+    navigate('/?' + searchParams.toString());
+  };
 
   let content;
   if (isLoading || !response) {
@@ -59,5 +65,9 @@ export default function Results(props: ResultsProps) {
     }
   }
 
-  return <div className="results">{content}</div>;
+  return (
+    <div className="results" onClick={closeDetails}>
+      {content}
+    </div>
+  );
 }

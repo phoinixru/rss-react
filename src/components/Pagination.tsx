@@ -33,7 +33,7 @@ export default function Pagination(props: PaginationProps) {
       <div className="info">
         Showing: {from}-{to} of {total}
       </div>
-      <fieldset className="controls">
+      <fieldset className="controls" onClick={(e) => e.stopPropagation()}>
         <button
           className="btn btn--prev"
           disabled={page === firstPage}

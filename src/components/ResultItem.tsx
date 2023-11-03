@@ -18,7 +18,7 @@ export default function ResultItem(props: ResultItemProps) {
   return (
     <li className="card">
       <h2 className="card__name">{name}</h2>
-      <Link to={cardLink(id)}>
+      <Link to={cardLink(id)} onClick={(e) => e.stopPropagation()}>
         <img className="card__image" src={small} alt={name} />
       </Link>
     </li>
