@@ -16,6 +16,21 @@
   --color-background: rgb(var(--color-background-rgb));
   --color-accent-rgb: 217 124 80;
   --color-accent: rgb(var(--color-accent-rgb));
+
+  &::-webkit-scrollbar {
+    // box model
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    // visual
+    background-color: rgb(var(--color-black-rgb) / 0.5);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-clip: content-box;
+    background-color: rgb(var(--color-accent-rgb));
+  }
 }
 
 body {
