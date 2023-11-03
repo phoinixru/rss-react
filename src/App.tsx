@@ -16,13 +16,13 @@ export default function App() {
   return (
     <div className="app">
       <h1>Pokémon TCG</h1>
-      <ErrorBoundary>
-        <Search onChange={updateQuery} value={searchQuery} />
-        <div className="cards-pane">
+      <Search onChange={updateQuery} value={searchQuery} />
+      <div className="cards-pane">
+        <ErrorBoundary>
           <Results query={searchQuery} />
           <Outlet />
-        </div>
-      </ErrorBoundary>
+        </ErrorBoundary>
+      </div>
     </div>
   );
 }
