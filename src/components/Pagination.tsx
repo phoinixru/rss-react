@@ -25,9 +25,7 @@ export default function Pagination(props: PaginationProps) {
   };
 
   const setPageSize = (pageSize: string) => {
-    if (pageSize) {
-      setSearchParams({ pageSize });
-    }
+    setSearchParams(pageSize ? { pageSize } : {});
   };
 
   return (
