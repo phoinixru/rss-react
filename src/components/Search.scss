@@ -1,9 +1,15 @@
 .search {
+}
+
+.fieldset {
   // box model
   display: flex;
-  flex-direction: row;
   gap: 0.5rem 1rem;
-  flex-wrap: wrap;
+  padding: 0;
+  margin-bottom: 0.5rem;
+
+  // border
+  border: 0;
 }
 
 .search__input {
@@ -20,7 +26,7 @@
 
   // typography
   font-family: var(--font-title);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 
   &:focus {
     outline: 2px solid var(--color-accent);
@@ -50,10 +56,6 @@
 }
 
 .search__note {
-  // box model
-  width: 100%;
-  margin: 0;
-
   // typography
   font-size: 0.8rem;
 }
