@@ -1,0 +1,103 @@
+@import 'reset';
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Yeseva+One&display=swap');
+
+:root {
+  --font-title: 'Yeseva One', serif;
+  --font-paragraph: 'Josefin Sans', sans-serif;
+
+  --color-white-rgb: 255 255 255;
+  --color-white: rgb(var(--color-white-rgb));
+  --color-black-rgb: 0 0 0;
+  --color-black: rgb(var(--color-black-rgb));
+
+  --color-text-rgb: 219 169 136;
+  --color-text: rgb(var(--color-text-rgb));
+  --color-background-rgb: 22 44 58;
+  --color-background: rgb(var(--color-background-rgb));
+  --color-accent-rgb: 217 124 80;
+  --color-accent: rgb(var(--color-accent-rgb));
+
+  &::-webkit-scrollbar {
+    // box model
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    // visual
+    background-color: rgb(var(--color-black-rgb) / 0.5);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-clip: content-box;
+    background-color: rgb(var(--color-accent-rgb));
+  }
+}
+
+body {
+  // box model
+  padding: 1rem;
+
+  // typography
+  font-family: var(--font-paragraph);
+  font-size: 1rem;
+  color: var(--color-text);
+  font-size: 4.266666666666667vw;
+
+  // visual
+  background-color: var(--color-background);
+
+  @media (min-width: 500px) {
+    font-size: 16px;
+  }
+}
+
+code {
+  // box model
+  padding: 0.1rem 0.2rem;
+
+  // border
+  border: 1px solid var(--color-accent);
+  border-radius: 0.3rem;
+
+  // visual
+  background-color: rgb(var(--color-white-rgb) / 0.2);
+}
+
+.btn,
+select {
+  // border
+  border-radius: 0.2rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: initial;
+
+  // typography
+  color: var(--color-text);
+
+  // visual
+  background-color: rgb(var(--color-white-rgb) / 0.2);
+  cursor: pointer;
+
+  // other
+  transition: all 0.2s;
+
+  &:hover {
+    // visual
+    background-color: rgb(var(--color-black-rgb) / 0.4);
+
+    // typography
+    color: var(--color-accent);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      // visual
+      background-color: rgb(var(--color-white-rgb) / 0.2);
+      // typography
+      color: var(--color-text);
+    }
+  }
+}

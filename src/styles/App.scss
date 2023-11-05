@@ -1,0 +1,13 @@
+.app {
+  // box model
+  max-width: 900px;
+  margin: auto;
+}
+
+.cards-pane {
+  // box model
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 1rem;
+}

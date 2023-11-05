@@ -1,0 +1,39 @@
+.pagination {
+  // positioning
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  // box model
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: -1rem -1rem 1rem;
+  padding: 0.5rem 1rem;
+
+  // visual
+  background-color: rgb(59 68 80);
+
+  @media (max-width: 600px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+}
+
+.controls {
+  // box model
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+  padding: 0;
+
+  // border
+  border: 0;
+
+  button {
+    // visual
+    cursor: pointer;
+  }
+}
