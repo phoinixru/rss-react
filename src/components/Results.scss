@@ -1,10 +1,33 @@
 .results {
+  // positioning
+  position: relative;
+
   // box model
   padding: 1rem;
-  flex-grow: 1;
+  flex-basis: 100%;
+
+  transition: all 0.3s;
 
   // visual
   background-color: rgb(var(--color-black-rgb) / 0.1);
+
+  &:after {
+    content: '';
+
+    // positioning
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+
+    // visual
+    background-color: transparent;
+
+    // other
+    transition: all 0.3s;
+  }
 }
 
 .nothing {

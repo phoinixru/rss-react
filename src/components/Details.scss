@@ -1,10 +1,10 @@
 .card-details {
   // positioning
   position: relative;
+  order: 1;
 
   // box model
-  width: 33%;
-  flex-shrink: 0;
+  flex-basis: 34%;
 
   // typography
   font-size: 0.9em;
@@ -12,8 +12,10 @@
   // visual
   background-color: rgb(var(--color-white-rgb) / 0.1);
 
+  transition: width 1s;
+
   @media (max-width: 600px) {
-    width: 45%;
+    flex-basis: 45%;
   }
 
   h2 {
@@ -111,4 +113,21 @@
   align-items: center;
   width: 100%;
   height: 1.5rem;
+}
+
+.card-details + .results {
+  flex-basis: 66%;
+
+  @media (max-width: 600px) {
+    flex-basis: 55%;
+  }
+
+  &:after {
+    // positioning
+    z-index: 10;
+
+    // visual
+    background-color: rgb(var(--color-black-rgb) / 0.5);
+    cursor: pointer;
+  }
 }

@@ -19,8 +19,8 @@ export default function App() {
       <Search onChange={updateQuery} value={searchQuery} />
       <div className="cards-pane">
         <ErrorBoundary>
-          <Results query={searchQuery} />
           <Outlet />
+          <Results query={searchQuery} />
         </ErrorBoundary>
       </div>
     </div>
